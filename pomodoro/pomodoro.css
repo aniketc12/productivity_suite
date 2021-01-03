@@ -1,0 +1,48 @@
+body {
+    color: black;
+    background-color: #00587a;
+}
+
+
+.header {
+    text-align: center;
+    font-size: 40px;
+    color: white;
+}
+
+.row {
+    text-align: center;
+}
+
+.current {
+    color: #e5e5e5;
+}
+
+.jumbotron {
+    text-align: center;
+}
+
+.jumb {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.time {
+    border: 5px black solid;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

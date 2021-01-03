@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Todo List</title>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <h1 class="header">Todo</h1>
+        <div class="all-lists">
+            <h2 class="todo-list-title">Todo Lists:</h2>
+
+            <ul class="lists" style="list-style-type:none" id="lists">
+            </ul>
+            <form action="" id="add-new-list">
+                <button class="btn add-list">+</button>
+                <input type="text" autocomplete="off" class="new-list" id="add-new-list-input" placeholder="New List">
+            </form>
+            <br><br>
+            <button class="clear-all" id="delete-lists"> Delete All Lists </button>
+        </div>
+        <div class="current-list">
+            <div class="current-list-header" id="list-header">
+                <h2 class="current-list-title">List 1</h2>
+            </div>
+            <div class="current-list-body">
+                <div class="tasks" id="tasks">
+                    <div class="todo">
+                        <input type="checkbox", id="todo-1">
+                        <label for="todo-1">
+                            <span class="todo-check"></span>
+                            Todo 1
+                        </label>
+                        <button class="delete-todo"> - </button>
+                    </div>
+                    <div class="todo">
+                        <input type="checkbox", id="todo-2">
+                        <label for="todo-2">
+                            <span class="todo-check"></span>
+                            Todo 2
+                        </label>
+                        <button class="delete-todo"> - </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="create-todo" id="create-todo">
+                <form action="" id="add-todo-list">
+                    <button class="btn add-todo"> + </button>
+                    <input type="text" autocomplete="off" class="new-todo" id="add-todo-list-input" placeholder="Add Task">
+                </form>
+            </div>
+            <br>
+            <button class="clear-all" id="clear-tasks"> Clear Tasks </button>
+        </div>
+        <script defer src="todo.js"></script>
+    </body>
+</html>

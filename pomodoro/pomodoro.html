@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pomodoro Timer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./pomodoro.css">
+</head>
+<body>
+    <div class="container">
+        <br>
+        <h2 class="header">Pomodoro App</h2>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <h3 class="current">Work Time:</h3>
+                <input type="number" class="form-control" id="work-min" placeholder="Minutes (Default: 25)">
+                <br>
+                <input type="number" class="form-control" id="work-sec" placeholder="Seconds (Default: 00)">
+            </div>
+            <div class="col-sm-4">
+                <h3 class="current">Small Break Time:</h3>
+                <input type="number" class="form-control" id="s-break-min" placeholder="Minutes (Default: 5)">
+                <br>
+                <input type="number" class="form-control" id="s-break-sec" placeholder="Seconds (Default: 00)">
+                <br>
+                <button type="button" id="time-submit" class="btn">Submit</button>
+            </div>
+            <div class="col-sm-4">
+                <h3 class="current">Big Break Time:</h3>
+                <input type="number" class="form-control" id="b-break-min" placeholder="Minutes (Default: 15)">
+                <br>
+                <input type="number" class="form-control" id="b-break-sec" placeholder="Seconds (Default: 00)">
+            </div>
+        </div>
+        <br>
+        <div class="jumbotron">
+            <h2 id="current">Work</h2>
+            <div class="jumbotron jumb">
+                <div class="time">
+                    <div class="min">
+                        <h4 id="min"></h4>
+                    </div>
+                    &nbsp
+                    <h4>:</h4>
+                    &nbsp
+                    <div class="sec">
+                        <h4 id="sec"></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="buttons-container">
+                <button id="play"><span class="glyphicon glyphicon-play"></span></button>
+                &nbsp
+                &nbsp
+                <button id="reset"><span class="glyphicon glyphicon-repeat"></span></button>
+            </div>
+        </div>
+    </div>
+    <script defer src="pomodoro.js"></script>
+</body>
+</html>
