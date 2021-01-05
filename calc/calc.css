@@ -1,0 +1,57 @@
+{
+    margin: 0;
+    padding:0
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #00587a;
+}
+
+.jumbotron {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+}
+
+.calc {
+    position: relative;
+    display: grid;
+    width: 40%;
+    text-align: center;
+}
+
+.val {
+    grid-column: span 4;
+    height: 70px;
+    text-align: right;
+    padding: 10px;
+    font-size: 20px;
+}
+
+.num {
+    display: grid;
+    cursor: default;
+    width: 100px;
+    height: 50px;
+    padding: 10px;
+    border: 1px solid black;
+    transition: 300ms background;
+}
+
+.calc span.clr {
+    grid-column: span 2;
+    width: 200px;
+
+}
+
+.calc span.plus {
+    grid-row: span 2;
+    height: 100px;
+
+}
+.num:hover {
+    background-color: black;
+    color: white;
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./calc.css">
+</head>
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand active" href="/index.html">Productivity Suite</a>
+                <ul class="nav navbar-nav">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/todo/todo.html">Todo App</a></li>
+                    <li><a href="/pomodoro/pomodoro.html">Pomodoro Timer</a></li>
+                    <li><a href="/notes/notes.html">Notes App</a></li>
+                    <li class="active"><a href="/calc/calc.html">Calculator</a></li>
+                </ul>
+
+            </div>
+            <ul class="nav navbar-nav navbar-right" id="auth">
+            </ul>
+        </div>
+    </nav>
+    <div class="col-sm-2"></div>
+    <div class="col-sm-18">
+        <div class="jumbotron text-center">
+            <form class="calc" name="calc">
+                <input type="text" name="txt" class="val" onblur="this.focus()" autofocus>
+                <span class="num clr" id="clr" onclick="document.calc.txt.value +=''">c</span>
+                <span class="num" onclick="document.calc.txt.value +='/'">/</span>
+                <span class="num" onclick="document.calc.txt.value +='*'">*</span>
+                <span class="num" onclick="document.calc.txt.value +='7'">7</span>
+                <span class="num" onclick="document.calc.txt.value +='8'">8</span>
+                <span class="num" onclick="document.calc.txt.value +='9'">9</span>
+                <span class="num" onclick="document.calc.txt.value +='-'">-</span>
+                <span class="num" onclick="document.calc.txt.value +='4'">4</span>
+                <span class="num" onclick="document.calc.txt.value +='5'">5</span>
+                <span class="num" onclick="document.calc.txt.value +='6'">6</span>
+                <span class="num plus" onclick="document.calc.txt.value +='+'">+</span>
+                <span class="num" onclick="document.calc.txt.value +='3'">3</span>
+                <span class="num" onclick="document.calc.txt.value +='2'">2</span>
+                <span class="num" onclick="document.calc.txt.value +='1'">1</span>
+                <span class="num" onclick="document.calc.txt.value +='0'">0</span>
+                <span class="num" onclick="document.calc.txt.value +='.'">.</span>
+                <span class="num clr" id="equal">=</span>
+            </form>
+        </div>
+
+    </div>
+    <div class="col-sm-2"></div>
+    <script defer src="./calc.js"></script>
+    
+</body>
+</html>

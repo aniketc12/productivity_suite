@@ -1,0 +1,249 @@
+body {
+    font-family: 'Noto Sans JP', sans-serif;
+    color: white;
+    display: grid;
+
+    grid: 
+    "nav nav nav nav nav nav nav nav nav nav " auto
+        ". . . header header header  . . . ." auto
+        ". all-lists . current-list current-list current-list . . . ." auto;
+
+    background-color: #00587a;
+
+
+}
+
+.navbar {
+    grid-area: nav;
+}
+
+.header {
+    grid-area: header;
+    text-align: center;
+    font-size: calc(2.5vw + 1rem)
+}
+
+.delete-todo {
+    float: right;
+    color: black;
+    background-color: white;
+    border: 1px solid #003E5F;
+    transition-delay: 0.05s;
+    font-size : 20px;
+    padding: 0px 8px;
+    border-radius: 4px;
+}
+
+
+.delete-todo:hover {
+    background-color: #C43212;
+    color: white;
+}
+
+.lists {
+    height: 300px;
+    overflow-y: scroll;
+    overflow: auto;
+}
+
+.all-lists {
+    grid-area: all-lists;
+    text-align: left;
+    line-height: 9px;
+    width: 70%;
+}
+
+.todo-list-title {
+    margin-top:4%;
+}
+
+
+.todo-list {
+    line-height: 40px;
+    cursor: default;
+}
+
+.todo-list:hover {
+    background-color:rgba(255,255,255,0.1);
+}
+
+.selected-list {
+    font-weight: 900;
+    line-height: 40px;
+    border-bottom: 1px solid #ffffff;
+    background-color:rgba(255,255,255,0.3);
+    border-radius: 2px;
+}
+
+.selected-list:hover {
+    background-color:rgba(255,255,255,0.3);
+}
+
+
+.btn1 {
+    background: transparent;
+    border:0;
+    color: white;
+    padding: 0;
+    font-size: 20px;
+}
+
+.add-list {
+    width: 10%;
+
+}
+
+.add-list:hover {
+    background: black;
+   
+}
+
+.add-todo {
+    color: black;
+}
+
+[type="checkbox"] {
+    opacity: 0;
+    position: absolute;
+}
+
+[type="checkbox"]:checked +label .todo-check {
+    background: #CF7604;
+    border-color: #00669D;
+    box-shadow: inset 0 0 0px 1.5px white;
+}
+
+[type="checkbox"]:checked +label {
+    opacity: 0.5;
+}
+
+ul {
+     padding: 0;
+ }
+
+.new-list {
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid white;
+    width: 40%;
+    color: white;
+    outline: none;
+    transition: width 900ms;
+    font-size: 17px;
+}
+.new-list:focus {
+    border-bottom: 2.5px solid white;
+    width: 70%;
+}
+.new-list::placeholder {
+    color: white;
+    opacity: 0.5;
+}
+
+.new-todo {
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid black;
+    color: black;
+    outline: none;
+    width: 30%;
+    transition: width 900ms;
+    font-size: 17px;
+}
+.new-todo:focus {
+    border-bottom: 2px solid black;
+    width: 50%;
+}
+
+.current-list {
+    grid-area: current-list;
+    background-color: white;
+    color: black;
+    height: 500px;
+}
+
+
+.current-list-title {
+    margin:0;
+    padding: 5%;
+    text-align: center;
+    font-size: calc(1vw + 1rem)
+}
+
+.todo-check {
+    display:inline-block;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    cursor: default;
+    border: 1.5px solid black;
+    border-radius: 50%;
+    border-color: #00669D;
+    transition: transform 500ms;
+    transition: background 300ms ease-in;
+}
+
+.tasks {
+    margin-left: 10%;
+    line-height: 30px;
+    margin-right: 10%;
+    height: 340px;
+    overflow-y: scroll;
+    overflow: auto;
+}
+
+.clear-all {
+    border: 1px solid white;
+    border-radius: 5%;
+    padding: 5px;
+    background: white;
+    color: black;
+    font-size: 15px;
+    float: center;
+    transition: background 200ms ease-in
+}
+
+.clear-all:hover {
+    background-color: black;
+    color: white;
+    border: 1px solid black;
+}
+
+.todo {
+    border-bottom: 1px solid #e4e4e4;
+    margin-bottom: 5%;
+}
+
+.todo:hover .todo-check {
+    transform: scale(1.35);
+}
+
+.current-list-header {
+    background-color: #e4e4e4;
+    height: 17%;
+    margin: 0;
+    margin-bottom: 5%;
+}
+.create-todo {
+    line-height: 40px;
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 100%;
+}
+
+
+.delete-list-button {
+    color: black;
+    background-color: white;
+    border: 1px solid #003E5F;
+    transition-delay: 0.05s;
+    font-size : 20px;
+    padding: 0px 8px;
+    border-radius: 4px;
+}
+
+.delete-list-button:hover {
+    background-color: #C43212;
+    color: white;
+}
+
