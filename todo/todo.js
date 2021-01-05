@@ -7,18 +7,58 @@ var addTodoListInput = document.getElementById('add-todo-list-input')
 var tasksContainer = document.getElementById('tasks')
 var deleteLists = document.getElementById('delete-lists')
 var clearTasks = document.getElementById('clear-tasks')
+var auth = document.getElementById('auth')
+
+var isNotAuth = '\
+    <li><a href="/login/signup.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li> \
+    \n <li><a href="/login/login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li> \
+'
+
+var isAuth = '\
+    <li><a href="/login/logout.html"><span class="glyphicon glyphicon-user"></span> Log out </a></li> \
+'
+
+
+var xhr = new XMLHttpRequest();
+var username = ''
+var apiURL = 'http://localhost:8000/auth/isAuth/' + localStorage.getItem("username")
+var allLists = []
+
+xhr.open("get", apiURL, false)
+xhr.setRequestHeader('Content-Type', 'application/json')
+xhr.setRequestHeader("authorization", "Bearer " + localStorage.getItem("token"))
+xhr.onload = function() {
+    var res = JSON.parse(xhr.responseText) 
+    if (res.auth == false) {
+        auth.innerHTML = isNotAuth
+    }
+    else {
+        auth.innerHTML = isAuth
+    }
+}
+xhr.send()
 
 var currentListTasks = []
 
 
 var xhr = new XMLHttpRequest();
-var apiURL = 'http://localhost:8000/api/todo/aniket'
+var username = ''
+var apiURL = 'http://localhost:8000/api/todo/' + localStorage.getItem("username")
+var allLists = []
 
 xhr.open("get", apiURL, false)
 xhr.setRequestHeader('Content-Type', 'application/json')
+xhr.setRequestHeader("authorization", "Bearer " + localStorage.getItem("token"))
+console.log(localStorage.getItem("token"))
+xhr.onload = function() {
+    var res = JSON.parse(xhr.responseText) 
+    if (res.auth == false) {
+        window.location.replace("/login/login.html")
+    }
+    allLists = res.lists
+    console.log(allLists)
+}
 xhr.send()
-var allLists = JSON.parse(xhr.responseText)
-console.log(xhr.responseText)
 
 if (allLists == null) {
     allLists = []
@@ -76,9 +116,16 @@ addNewList.addEventListener('submit', event => {
 
 
 writeToDisk = () => {
-    xhr.open("put", apiURL, true)
-    xhr.setRequestHeader('Content-Type', 'application/json')
-    xhr.send(JSON.stringify(allLists))
+    var chr = new XMLHttpRequest();
+    chr.open("put", apiURL, true)
+    chr.setRequestHeader('Content-Type', 'application/json')
+    chr.setRequestHeader("authorization", "Bearer " + localStorage.getItem("token"))
+    chr.onload = function() {
+        if (xhr.responseText.auth == false) {
+            window.location.replace("/login/login.html")
+        }
+    }
+    chr.send(JSON.stringify(allLists))
 }
 
 clearChildObjects = () => {

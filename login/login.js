@@ -2,7 +2,6 @@ var submitButton = document.getElementById('submit-button')
 
 submitButton.addEventListener('click', event => {
     event.preventDefault()
-    console.log('Hello')
     var xhr = new XMLHttpRequest();
     var apiURL = '/login'
     xhr.open("post", apiURL, true)
@@ -10,7 +9,18 @@ submitButton.addEventListener('click', event => {
     var username = document.getElementById('username').value 
     var pwd = document.getElementById('pwd').value
     xhr.onload = function() {
-        console.log(xhr.responseText)
+        var reply = JSON.parse(xhr.responseText)
+        if (reply.auth == false) {
+            alert(reply.message)
+            return
+        }
+        else {
+            localStorage.setItem("username", reply.result)
+            localStorage.setItem("token", reply.token)
+            alert('Logged In')
+            window.location.replace('/')
+        }
+
     }
     xhr.send(JSON.stringify({
         username: username,

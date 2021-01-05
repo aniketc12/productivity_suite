@@ -4,6 +4,7 @@ body {
     display: grid;
 
     grid: 
+    "nav nav nav nav nav nav nav nav nav nav " auto
         ". . . header header header  . . . ." auto
         ". all-lists . current-list current-list current-list . . . ." auto;
 
@@ -12,6 +13,9 @@ body {
 
 }
 
+.navbar {
+    grid-area: nav;
+}
 .header {
     grid-area: header;
     text-align: center;
@@ -74,7 +78,7 @@ body {
 }
 
 
-.btn {
+.btn1 {
     background: transparent;
     border:0;
     color: white;
@@ -94,6 +98,12 @@ body {
 
 .add-todo {
     color: black;
+    transition: 300ms background;
+}
+
+.add-todo:hover {
+    color: white;
+    background-color: black;
 }
 
 [type="checkbox"] {
@@ -134,7 +144,7 @@ ul {
     opacity: 0.5;
 }
 
-.new-todo {
+.new-todo1 {
     background: transparent;
     border: 0;
     border-bottom: 1px solid black;
@@ -142,9 +152,9 @@ ul {
     outline: none;
     width: 30%;
     transition: width 900ms;
-    font-size: 17px;
+    font-size: 12px;
 }
-.new-todo:focus {
+.new-todo1:focus {
     border-bottom: 2px solid black;
     width: 50%;
 }

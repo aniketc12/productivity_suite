@@ -4,9 +4,30 @@
         <meta charset="UTF-8">
         <title>Todo List</title>
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                <a class="navbar-brand active" href="/index.html">Productivity Suite</a>
+                    <ul class="nav navbar-nav">
+                        <li><a href="/">Home</a></li>
+                        <li class="active"><a href="/todo/todo.html">Todo App</a></li>
+                        <li><a href="/pomodoro/pomodoro.html">Pomodoro Timer</a></li>
+                        <li><a href="/notes/notes.html">Notes App</a></li>
+                        <li><a href="/calc/calc.html">Calculator</a></li>
+                    </ul>
+
+                </div>
+                <ul class="nav navbar-nav navbar-right" id="auth">
+                </ul>
+            </div>
+        </nav>
         <h1 class="header">Todo</h1>
         <div class="all-lists">
             <h2 class="todo-list-title">Todo Lists:</h2>
@@ -14,7 +35,7 @@
             <ul class="lists" style="list-style-type:none" id="lists">
             </ul>
             <form action="" id="add-new-list">
-                <button class="btn add-list">+</button>
+                <button class="btn1 add-list">+</button>
                 <input type="text" autocomplete="off" class="new-list" id="add-new-list-input" placeholder="New List">
             </form>
             <br><br>
@@ -47,8 +68,8 @@
             
             <div class="create-todo" id="create-todo">
                 <form action="" id="add-todo-list">
-                    <button class="btn add-todo"> + </button>
-                    <input type="text" autocomplete="off" class="new-todo" id="add-todo-list-input" placeholder="Add Task">
+                    <button class="btn1 add-todo"> + </button>
+                    <input type="text" autocomplete="off" class="new-todo1" id="add-todo-list-input" placeholder="Add Task">
                 </form>
             </div>
             <br>

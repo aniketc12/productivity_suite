@@ -41,7 +41,10 @@ app.post('/login', (req, res) => {
         }
         else {
             if (!result[0]) {
-                res.send('This Username does not exist')
+                res.json({
+                    auth: false,
+                    message: 'This Username does not exist'
+                })
                 return
             }
             query = "select * from users where username = '"+req.body.username+"' and password = '"+req.body.password+"'"
@@ -51,11 +54,22 @@ app.post('/login', (req, res) => {
                 }
                 else {
                     if (result[0]) {
-                        res.send('Success')
+                        var username = result[0].username
+                        const token = jwt.sign({username}, process.env.SESSION_SECRET, {
+                            expiresIn: 3000
+                        })
+                        res.json({
+                            auth: true,
+                            token: token,
+                            result: username
+                        })
                         return
                     }
                     else {
-                        res.send('Password is Incorrect')
+                        res.json({
+                            auth: false,
+                            message: 'Password is Incorrect'
+                        })
                         return
                     }
 
@@ -67,37 +81,123 @@ app.post('/login', (req, res) => {
 })
 
 
-app.put('/api/todo/:username', (req, res) => {
+var verify = (req, res, next) => {
+    var token = req.headers["authorization"]
+    if (!token) {
+        res.json({
+            auth: false
+        })
+        return
+    }
+    else {
+        token = token.substring(7)
+        jwt.verify(token, process.env.SESSION_SECRET, (err, decoded) => {
+            if (err) {
+                console.log(err)
+                res.json({
+                    auth: false
+                })
+                return
+            }
+            else {
+                req.username = decoded.username
+                next()
+            }
+
+        })
+    }
+}
+
+app.put('/api/todo/:username', verify, (req, res) => {
+    if (req.params.username != req.username) {
+        res.json({
+            auth: false
+        })
+        return
+    }
+    console.log(req.username)
     query = "update todo set lists = '"+JSON.stringify(req.body)+
-        "' where username = 'aniket'"
+        "' where username = '"+req.username+"'"
     db.query(query, (err, result, fields) => {
         if (err) {
             console.log(err)
         }
         else {
-            res.send('Success')
+            res.json({
+                auth: true
+            })
         }
     })
-    console.log('put')
 
 })
 
-app.get('/api/todo/:username', (req, res) => {
-    console.log('here')
+app.get('/api/todo/:username', verify, (req, res) => {
+    if (req.params.username != req.username) {
+        res.json({
+            auth: false
+        })
+        return
+    }
     query = "select lists from todo where username = '"+req.params.username+"'"
     db.query(query, (err, result, fields) => {
         if (err) {
             console.log(err)
         }
         else {
-            res.send(JSON.parse(result[0].lists))
+            res.json({
+                auth: true,
+                lists: JSON.parse(result[0].lists)
+            })
         }
     })
 })
 
 
+app.put('/api/notes/:username', verify, (req, res) => {
+    if (req.params.username != req.username) {
+        res.json({
+            auth: false
+        })
+        return
+    }
+    query = "update notes set lists = '"+JSON.stringify(req.body)+
+        "' where username = '"+req.username+"'"
+    db.query(query, (err, result, fields) => {
+        if (err) {
+            console.log(err)
+        }
+        else {
+            res.json({
+                auth: true
+            })
+        }
+    })
+
+})
+
+app.get('/api/notes/:username', verify, (req, res) => {
+
+    if (req.params.username != req.username) {
+        res.json({
+            auth: false
+        })
+        return
+    }
+    query = "select lists from notes where username = '"+req.params.username+"'"
+    db.query(query, (err, result, fields) => {
+        if (err) {
+            console.log(err)
+        }
+        else {
+            res.json({
+                auth: true,
+                lists: JSON.parse(result[0].lists)
+            })
+        }
+    })
+})
+
 app.post('/auth/signup', (req, res) => {
-    console.log(req.body.username)
     query = "select * from users where username = '"+req.body.username+"'"
     db.query(query, (err, result, fields) => {
         if (err) {
@@ -123,6 +223,18 @@ app.post('/auth/signup', (req, res) => {
                 res.send('Success')
             }
         }
+    })
+})
+
+app.get('/auth/isAuth/:username', verify, (req, res) => {
+    if (req.params.username != req.username) {
+        res.json({
+            auth: false
+        })
+        return
+    }
+    res.json({
+        auth: true
     })
 })
 
